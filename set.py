@@ -37,7 +37,7 @@ class Set(object):
         if teamB_wins >= 7: #7-6 or 7-5
             return teamB
         if teamA_wins > 5: #7-5 for teamA
-            if abs(teamB_wins - teamA_wins) > 2:
+            if abs(teamB_wins - teamA_wins) > 2: #difference between wins and losses have to be at least 2 unless you go to a tiebreak
                 return teamA
         if teamB_wins > 5: #7-5 for teamB
             if abs(teamB_wins - teamA_wins) > 2:
