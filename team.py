@@ -8,3 +8,5 @@ class Team(object):
 
     def add_player(self, player):
         self.players.append(player)
+
+        #adding the possible players that could be in the class of team

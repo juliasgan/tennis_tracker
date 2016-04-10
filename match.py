@@ -41,6 +41,8 @@ class Match(object):
                 return random.choice([teamA, teamB])
 
 
+
+
         print teamA_wins
         print teamB_wins
         return None

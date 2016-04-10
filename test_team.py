@@ -1,6 +1,7 @@
 import unittest
 from team import Team
 from player import Player
+#http://docs.python-guide.org/en/latest/writing/tests/
 
 class TeamTestCase(unittest.TestCase):
     def test_team_name(self):

@@ -32,9 +32,9 @@ class Set(object):
                 teamA_wins += 1
             if game.winner.name == teamB.name:
                 teamB_wins += 1
-        if teamA_wins >= 7: #7-6 or 7-5
+        if teamA_wins >= 7: #if the score is 7-6 or 7-5 for teamA (teamA wins)
             return teamA
-        if teamB_wins >= 7: #7-6 or 7-5
+        if teamB_wins >= 7: #if the score is 7-6 or 7-5 for teamB (teamB wins)
             return teamB
         if teamA_wins > 5: #7-5 for teamA
             if abs(teamB_wins - teamA_wins) > 2: #difference between wins and losses have to be at least 2 unless you go to a tiebreak

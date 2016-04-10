@@ -1,4 +1,5 @@
 import unittest
+#http://docs.python-guide.org/en/latest/writing/tests/
 from team import Team
 from game import Game
 
