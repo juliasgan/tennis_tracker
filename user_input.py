@@ -1,6 +1,8 @@
 from game import Game
 from team import Team
 from set import Set
+from match import Match
+import sys
 
 
 class UserInput(object):
@@ -29,27 +31,46 @@ class UserInput(object):
             if string1 != "" and string2 != "" and string3 != "":
                 team1 = Team(string1)
                 team2 = Team(string2)
-                team3 = None
-                if string3 == "true":
-                    team3 = team1
-                else:
-                    team3 = team2
+                scores = string3.split("-")
 
-                game = Game(team1, team2, team3)
+                game = Game(team1, team2, int(scores[0]), int(scores[1]))
                 games.append(game)
                 set = Set(games)
-                print len(games)
+                match = Match(sets, team1, team2)
+                print "games : " + str(len(games))
+                print "sets : " + str(len(sets))
 
                 if set.winner() != None:
                     sets.append(set)
                     games = []
-                    set = None
+
+                if match.winner() != None:
+                    games = []
+                    sets = None
+
                 string1 = ""
                 string2 = ""
                 string3 = ""
 
 
-        return sets
+        return match
+
+    def take_input(self):
+        text = input("Enter game information:\n")
+        print text
+        match = self.parse_input(text)
+        print "The number of sets: " + str(len(match.sets))
+        print "The winner is: " + str(match.winner().name)
+
+
+
+
+
+
+
+
+
+
 
 
 

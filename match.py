@@ -42,9 +42,6 @@ class Match(object):
 
 
 
-
-        print teamA_wins
-        print teamB_wins
         return None
 
 
