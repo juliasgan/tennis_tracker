@@ -36,6 +36,25 @@ class Set(object):
 
         return None
 
+    def get_teamA_wins(self):
+        teamA_wins = 0
+        teamA = Team("Cate")
+        teamB = Team("Opponent")
+        for game in self.games:
+            if game.winner().name == teamA.name:
+                teamA_wins += 1
+        return teamA_wins
+
+
+    def get_teamB_wins(self):
+        teamB_wins = 0
+        teamA = Team("Cate")
+        teamB = Team("Opponent")
+        for game in self.games:
+            if game.winner().name == teamB.name:
+                teamB_wins += 1
+        return teamB_wins
+
 
 
 

@@ -10,3 +10,4 @@ class Team(object):
         self.players.append(player)
 
         #adding the possible players that could be in the class of team
+        #I could also give the team a record for the season that has been played so far

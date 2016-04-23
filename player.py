@@ -4,6 +4,9 @@ class Player(object):
     def __init__(self, name):
         self.name = name
 
+        #other things pr attributes that I could put into player: rank, what team that specific player belongs to
+
+
 
 
 

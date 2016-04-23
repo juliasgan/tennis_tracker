@@ -19,11 +19,11 @@ class Match(object):
                 teamA_wins += 1
             if set.winner().name == teamB.name:
                 teamB_wins += 1
-        if teamA_wins >= 10:  # they win the match
+        if teamA_wins >= 10:  # they automatically win the match
             return teamA
-        if teamB_wins >= 10:  # they win the match
+        if teamB_wins >= 10:  # they automatically win the match
             return teamB
-        if teamA_wins == 9 and teamB_wins == 9:
+        if teamA_wins == 9 and teamB_wins == 9: #this is when the two teams are tied
             #tally games
             teamA_game_wins = 0
             teamB_game_wins = 0
@@ -33,12 +33,12 @@ class Match(object):
                         teamA_game_wins += 1
                     if game.winner.name == teamB.name:
                         teamB_game_wins += 1
-            if teamA_game_wins > teamB_game_wins:
-                return teamA
-            if teamB_game_wins > teamA_game_wins:
-                return teamB
+            if teamA_game_wins > teamB_game_wins: #if match score is tied, compare the # of games in all the combined sets
+                return teamA #teamA has the most games when added up
+            if teamB_game_wins > teamA_game_wins: #if match score is tied, compare the # of games in all the combined sets
+                return teamB #teamB has the most games when added up
             if teamA_game_wins == teamB_game_wins:
-                return random.choice([teamA, teamB])
+                return random.choice([teamA, teamB]) #this is coin flip (heads or tails) if the game_wins is is tied
 
 
 
