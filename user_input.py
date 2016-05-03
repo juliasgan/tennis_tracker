@@ -21,37 +21,63 @@ class UserInput(object):
         games = []
         sets = []
         game = None
-        string1 = ""
-        string2 = ""
-        string3 = ""
+        teamA_name = ""
+        teamB_name = ""
+        playersA = ""
+        playersB = ""
+        game_score = ""
         row = 1
         col = 1
-
+        num_sets = 0
 
         for line in inputs:
             print row
             print col
 
-            if string1 == "":
-                string1 = line
-            elif string2 == "":
-                string2 = line
-            elif string3 == "":
-                string3 = line
-            if string1 != "" and string2 != "" and string3 != "":
-                team1 = Team(string1)
-                team2 = Team(string2)
-                scores = string3.split("-")
+            if teamA_name == "":
+                teamA_name = line
+            elif teamB_name == "":
+                teamB_name = line
+            elif playersA == "":
+                playersA = line
+            elif playersB == "":
+                playersB = line
+            elif game_score == "":
+                game_score = line
+
+
+            if teamA_name != "" and teamB_name != "" and playersA != "" and playersB != "" and game_score != "":
+                team1 = Team(teamA_name)
+                team2 = Team(teamB_name)
+                scores = game_score.split("-")
                 game = Game(team1, team2, int(scores[0]), int(scores[1]))
                 games.append(game)
-                set = Set(games)
+                print "num_sets: " + str(num_sets)
+                set = Set(games, teamA_name, teamB_name, playersA.split(",")[num_sets%3], playersB.split(",")[num_sets%3])
                 match = Match(sets, team1, team2)
                 print "games : " + str(len(games))
-                print "sets : " + str(len(sets))
+
 
                 if set.winner() != None:
+                    num_sets += 1
                     score = str(set.get_teamA_wins()) + '-' + str(set.get_teamB_wins())
                     self.interface.t.set(row, col, score)
+                    if row != 1:
+                        self.interface.t.set(4, col, set.playersA)
+                        self.interface.t.set(row, 4, set.playersB)
+                    if col != 2:
+                        self.interface.t.set(4, col, set.playersA)
+                        self.interface.t.set(row, 4, set.playersB)
+                    if col == 2 and row == 3:
+                        self.interface.t.set(4, col, set.playersA)
+                        self.interface.t.set(row, 4, set.playersB)
+
+
+
+                    print str(row) + " " + str(col) + " " + str(score)
+                    print num_sets
+                    print "set.playersA: " + str(set.playersA)
+                    print "set.playersB: " + str(set.playersB)
 
                     if col < 3:
                         col += 1
@@ -69,7 +95,7 @@ class UserInput(object):
                     sets = None
 
 
-                string3 = ""
+                game_score = ""
 
 
 

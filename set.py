@@ -3,15 +3,30 @@ from team import Team
 class Set(object):
 
     #precondition: all games have the same teams
-    def __init__(self, games):
+    def __init__(self, games, schoolA, schoolB, playersA, playersB):
         self.games = games
+        teamA = Team(schoolA)
+        teamB = Team(schoolB)
+
+        for player in playersA.split(","):
+            teamA.add_player(player)
+
+        for player in playersB.split(","):
+            teamB.add_player(player)
+
+
+        self.teamA = teamA
+        self.teamB = teamB
+        self.playersA = playersA
+        self.playersB = playersB
+
 
     def winner(self):
         teamA_wins = 0
         teamB_wins = 0
 
-        teamA = Team("Cate")
-        teamB = Team("Opponent")
+        teamA = self.teamA
+        teamB = self.teamB
         if len(self.games) > 0:
             teamA = self.games[0].teamA
             teamB = self.games[0].teamB
