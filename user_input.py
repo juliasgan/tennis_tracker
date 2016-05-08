@@ -21,16 +21,19 @@ class UserInput(object):
         games = []
         sets = []
         game = None
+
         teamA_name = ""
         teamB_name = ""
         playersA = ""
         playersB = ""
+
         game_score = ""
         row = 1
         col = 1
         num_sets = 0
 
         for line in inputs:
+            #reading the input one line at a time, will start with teamA_name, teamB_name, etc)
 
             if teamA_name == "":
                 teamA_name = line
@@ -45,6 +48,7 @@ class UserInput(object):
 
 
             if teamA_name != "" and teamB_name != "" and playersA != "" and playersB != "" and game_score != "":
+                #constructing the games sets match
                 team1 = Team(teamA_name)
                 team2 = Team(teamB_name)
                 scores = game_score.split("-")
@@ -55,7 +59,7 @@ class UserInput(object):
                 match = Match(sets, team1, team2)
                 print "games : " + str(len(games))
 
-
+                #checking if there is a set winner, and then updating the user-interface in the table
                 if set.winner() != None:
                     num_sets += 1
                     score = str(set.get_teamA_wins()) + '-' + str(set.get_teamB_wins())
@@ -72,13 +76,11 @@ class UserInput(object):
                         self.interface.t.set(4, 4, "Players")
 
 
-
-
                     print "row: " + str(row) + " col: " + str(col) + " score: " + str(score)
                     print "set.playersA: " + str(set.playersA)
                     print "set.playersB: " + str(set.playersB)
 
-                    if col < 3:
+                    if col < 3: #setting up the players in the table
                         col += 1
                     else:
                         col = 1
@@ -89,13 +91,13 @@ class UserInput(object):
                     sets.append(set)
                     games = []
 
-                if match.winner() != None:
+                if match.winner() != None: #emptying out the lists of games and sets everytime a new match is started
                     games = []
-                    sets = None
+                    sets = []
 
 
                 game_score = ""
-                
+
         return match
 
     def take_input(self):

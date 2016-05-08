@@ -12,7 +12,8 @@ class Game(object):
 
 
     def winner(self):
-        difference = abs(self.teamA_score - self.teamB_score)
+        #Checking if teamA has enough points to win, if this is the case, then make sure the teamB score is not within 2 and vice versa
+
         if self.teamA_score >= 4: #40-0, 40-15, 40-30, deuce, Ad-in, Ad-out 4, 5, or 6 points
             if self.teamA_score - self.teamB_score >= 2: #difference must be at least 2
                 return self.teamA

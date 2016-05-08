@@ -8,10 +8,10 @@ class Set(object):
         teamA = Team(schoolA)
         teamB = Team(schoolB)
 
-        for player in playersA.split(","):
+        for player in playersA.split(","): #splitting the names by the comma (in the input-Kevin:1,) and adding it to the player list
             teamA.add_player(player)
 
-        for player in playersB.split(","):
+        for player in playersB.split(","): #same thing with the opponent
             teamB.add_player(player)
 
 
@@ -33,6 +33,7 @@ class Set(object):
 
 
         for game in self.games:
+        #This is going through each game and checking who won the game then incrementing teamA_wins or teamB_wins
             if game.winner().name == teamA.name:
                 teamA_wins += 1
             if game.winner().name == teamB.name:

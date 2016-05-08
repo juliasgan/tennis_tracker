@@ -1,20 +1,16 @@
 import Tkinter as tk
 from Tkinter import *
 
-
-class Interface(tk.Tk):
+class Interface(tk.Tk): #defining a new class called interface, tk will give interface access to its methods
     def __init__(self):
         tk.Tk.__init__(self)
         self.wm_title("Cate School Tennis Tracker")
-
-
 
         self.t = SimpleTable(self, 5,5)
         self.t.pack(side="top", fill="x")
 
 
-class SimpleTable(tk.Frame):
-#http://zetcode.com/gui/tkinter/layout/
+class SimpleTable(tk.Frame): #access to methods of tk.Frame, graphics 
     def __init__(self, parent, rows=3, columns=3):
         tk.Frame.__init__(self, parent, background="black")
         self._widgets = []
@@ -49,8 +45,7 @@ class SimpleTable(tk.Frame):
         w1 = Label(self, text="Cate", font="-weight bold", bg = "blue")
         w1.grid(row=0, column=0, sticky="nsew", padx=1, pady=1, columnspan = 5)
         w2.grid(row=1, column=0, sticky="nsew", padx=1, pady=1, rowspan = 5)
-        #w1.grid(row=0, column=1, sticky="nsew", padx=1, pady=1, columnspan = 5)
-        #w2.grid(row=2, column=0, sticky="nsew", padx=1, pady=1, rowspan = 5)
+
 
     def set(self, row, column, value):
         widget = self._widgets[row][column]

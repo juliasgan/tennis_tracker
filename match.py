@@ -8,6 +8,8 @@ class Match(object):
         self.teamB = teamB
 
     def winner(self):
+        #Going through each of the sets and finding out who won, and then incrementing the sets to either teamA_wins or teamB_wins, and then handling
+        #the tie-scenario and normal win-scenario
         teamA_wins = 0
         teamB_wins = 0
 
