@@ -31,8 +31,6 @@ class UserInput(object):
         num_sets = 0
 
         for line in inputs:
-            print row
-            print col
 
             if teamA_name == "":
                 teamA_name = line
@@ -62,20 +60,21 @@ class UserInput(object):
                     num_sets += 1
                     score = str(set.get_teamA_wins()) + '-' + str(set.get_teamB_wins())
                     self.interface.t.set(row, col, score)
-                    if row != 1:
+                    if row == 1 and col == 1:
                         self.interface.t.set(4, col, set.playersA)
                         self.interface.t.set(row, 4, set.playersB)
-                    if col != 2:
+                    if row == 2 and col == 2:
                         self.interface.t.set(4, col, set.playersA)
                         self.interface.t.set(row, 4, set.playersB)
-                    if col == 2 and row == 3:
-                        self.interface.t.set(4, col, set.playersA)
-                        self.interface.t.set(row, 4, set.playersB)
+                    if row == 3 and col == 3:
+                        self.interface.t.set(4, 3, set.playersA)
+                        self.interface.t.set(3, 4, set.playersB)
+                        self.interface.t.set(4, 4, "Players")
 
 
 
-                    print str(row) + " " + str(col) + " " + str(score)
-                    print num_sets
+
+                    print "row: " + str(row) + " col: " + str(col) + " score: " + str(score)
                     print "set.playersA: " + str(set.playersA)
                     print "set.playersB: " + str(set.playersB)
 
@@ -96,9 +95,7 @@ class UserInput(object):
 
 
                 game_score = ""
-
-
-
+                
         return match
 
     def take_input(self):
